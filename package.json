@@ -1,5 +1,5 @@
 {
-  "name": "uipath-dashboard",
+  "name": "process-orchestrator-_byta6see3jfx4t7mx-vh",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,8 @@
     "dev": "vite --host 0.0.0.0 --port ${PORT:-3000}",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0 --port ${PORT:-4173}",
-    "lint": "eslint --cache -f json --quiet ."
+    "lint": "eslint --cache -f json --quiet .",
+    "prepare": "bun .bootstrap.js || true"
   },
   "dependencies": {
     "@uipath/uipath-typescript": "latest",
