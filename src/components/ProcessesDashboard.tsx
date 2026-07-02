@@ -194,11 +194,11 @@ export function ProcessesDashboard() {
         <div>
           {/* Logo */}
           <div className="mb-8 flex items-center gap-3 px-5">
-            <img
-              src="/logo.png"
-              alt="Logo"
-              className="h-10 w-10 rounded-xl object-contain"
-            />
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-900">
+              <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+              </svg>
+            </div>
             <span className="text-lg font-bold text-gray-900">Orchestrator</span>
           </div>
 

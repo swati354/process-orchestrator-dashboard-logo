@@ -1,32 +1,41 @@
 import { AuthProvider, useAuth } from '@/hooks/useAuth';
+import { ProcessesDashboard } from '@/components/ProcessesDashboard';
 
-/**
- * Reference UiPath PKCE OAuth gate. Not rendered by App() while the scaffold
- * is showing the "Generating your app" placeholder. When the real app entry
- * point is written, wrap authenticated views in <AuthProvider> and gate UI
- * with a component like this. The PKCE flow itself lives in
- * src/hooks/useAuth.tsx — do not reimplement it.
- */
 function SignInGate() {
   const { isAuthenticated, isLoading, login, error } = useAuth();
 
   if (isLoading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-sm text-gray-600">Loading…</p>
+      <div className="flex min-h-screen items-center justify-center bg-gray-50">
+        <div className="flex flex-col items-center gap-3">
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-green-900 border-t-transparent" />
+          <p className="text-sm text-gray-500">Loading…</p>
+        </div>
       </div>
     );
   }
 
   if (!isAuthenticated) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4">
-        <h1 className="text-xl font-semibold">Sign in</h1>
-        {error && <p className="text-sm text-red-600">{error}</p>}
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-gray-50">
+        <div className="flex flex-col items-center gap-3">
+          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-900 shadow-lg">
+            <svg className="h-7 w-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-gray-900">Orchestrator Processes</h1>
+            <p className="mt-1 text-sm text-gray-500">Sign in to browse your UiPath process releases</p>
+          </div>
+        </div>
+        {error && (
+          <p className="rounded-lg bg-red-50 px-4 py-2 text-sm text-red-600">{error}</p>
+        )}
         <button
           type="button"
           onClick={login}
-          className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+          className="rounded-xl bg-green-900 px-8 py-3 text-sm font-semibold text-white shadow-sm hover:bg-green-800 transition-colors"
         >
           Sign in with UiPath
         </button>
@@ -34,83 +43,13 @@ function SignInGate() {
     );
   }
 
-  return (
-    <main className="min-h-screen p-8">
-      <h1 className="text-2xl font-semibold">UiPath Coded Web App</h1>
-      <p className="mt-2 text-sm text-gray-600">
-        Replace this placeholder with your application UI.
-      </p>
-    </main>
-  );
+  return <ProcessesDashboard />;
 }
-
-// Reference wiring: when replacing App() with the real entry point, the
-// typical pattern is:
-//
-//   export function App() {
-//     return (
-//       <AuthProvider>
-//         <SignInGate />
-//       </AuthProvider>
-//     );
-//   }
-//
-// The AuthProvider import above is retained so this reference compiles
-// against the scaffold even before App() is rewritten.
-void AuthProvider;
-void SignInGate;
 
 export function App() {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-orange-50 to-slate-50">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,140,66,0.18),transparent_60%)]"
-      />
-
-      <div className="relative z-10 flex flex-col items-center gap-8 px-6 text-center">
-        <div className="relative flex h-24 w-24 items-center justify-center">
-          <div className="absolute inset-0 animate-ping rounded-full bg-orange-300/40" />
-          <div className="absolute inset-2 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 shadow-lg shadow-orange-500/30" />
-          <svg
-            className="relative h-10 w-10 animate-spin text-white"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="9"
-              stroke="currentColor"
-              strokeOpacity="0.25"
-              strokeWidth="3"
-            />
-            <path
-              d="M21 12a9 9 0 0 0-9-9"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-        </div>
-
-        <div className="flex flex-col gap-3">
-          <h1 className="text-3xl font-semibold tracking-tight text-slate-900">
-            Generating your app
-          </h1>
-          <p className="max-w-md text-base text-slate-600">
-            Nucleus is still building this. What you see now is the scaffold —
-            this screen will update automatically as your real app comes online.
-          </p>
-        </div>
-
-        <div className="flex items-center gap-2" aria-label="Working">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500 [animation-delay:0ms]" />
-          <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500 [animation-delay:150ms]" />
-          <span className="h-2 w-2 animate-pulse rounded-full bg-orange-500 [animation-delay:300ms]" />
-        </div>
-      </div>
-    </div>
+    <AuthProvider>
+      <SignInGate />
+    </AuthProvider>
   );
 }
