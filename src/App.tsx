@@ -20,8 +20,8 @@ function SignInGate() {
       <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-gray-50">
         <div className="flex flex-col items-center gap-4">
           <img
-            src="/lumiere-logo.png"
-            alt="Lumiere Ent. logo"
+            src="/logo.png"
+            alt="Logo"
             className="h-28 w-28 rounded-3xl object-contain shadow-lg"
           />
           <div className="text-center">

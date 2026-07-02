@@ -195,8 +195,8 @@ export function ProcessesDashboard() {
           {/* Logo */}
           <div className="mb-8 flex items-center gap-3 px-5">
             <img
-              src="/lumiere-logo.png"
-              alt="Lumiere Ent."
+              src="/logo.png"
+              alt="Logo"
               className="h-10 w-10 rounded-xl object-contain"
             />
             <span className="text-lg font-bold text-gray-900">Orchestrator</span>
