@@ -18,12 +18,12 @@ function SignInGate() {
   if (!isAuthenticated) {
     return (
       <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-gray-50">
-        <div className="flex flex-col items-center gap-3">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-green-900 shadow-lg">
-            <svg className="h-7 w-7 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
+        <div className="flex flex-col items-center gap-4">
+          <img
+            src="/lumiere-logo.png"
+            alt="Lumiere Ent. logo"
+            className="h-28 w-28 rounded-3xl object-contain shadow-lg"
+          />
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900">Orchestrator Processes</h1>
             <p className="mt-1 text-sm text-gray-500">Sign in to browse your UiPath process releases</p>
